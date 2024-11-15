@@ -1,0 +1,145 @@
+:root {
+    --green: #59AB91;
+    --white: #fff;
+    --thumb: #edf2f4;
+}
+.scroll-container {
+    display: flex;
+    list-style: none;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+.scroll-container::-webkit-scrollbar {
+    height: 12px;
+}
+.scroll-container::-webkit-scrollbar-thumb,
+.scroll-container::-webkit-scrollbar-track {
+    border-radius: 92px;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+    background: var(--green);
+}
+.scroll-container::-webkit-scrollbar-track {
+    background: var(--thumb);
+}
+.scroll-item {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+    background: var(--white);
+    border-radius: 4px;
+    scroll-snap-align: start;
+    transition: all 0.2s;
+}
+.scroll-item .widget-user {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+}
+.scroll-item:not(:last-child) {
+    margin-right: 10px;
+}
+.scroll-item .widget-user-header {
+    background: var(--green);
+    color: white;
+}
+.widget-user-header .widget-user-desc {
+    max-width: 65%;
+    font-size: 14px;
+}
+.widget-user-header .widget-user-username {
+    font-size: 21px;
+}
+.widget-user .widget-user-image {
+    position: absolute;
+    top: 65px;
+    left: 75%;
+    margin-left: -45px;
+}
+.with-badge {
+    position: relative;
+    display: inline-block;
+}
+.with-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(to bottom left, transparent 30%, #ef233c 4%, #ef233c 50.5%, transparent 50.5%);
+    transform-origin: bottom right;
+    z-index: 1;
+}
+.with-badge::after {
+    content: 'Government';
+    position: absolute;
+    top: 9%;
+    right: 5%;
+    transform: translate(50%, -50%) rotate(45deg);
+    color: white;
+    font-size: 8px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.widget-user-image {
+    overflow: hidden;
+}
+.widget-user-image img {
+    transition: transform .3s ease-in-out;
+}
+.scroll-item:hover .widget-user-image img {
+    /*transform: scale(.9);*/
+    width: 100px;
+}
+.available-slot-event {
+    cursor: pointer;
+}
+/*===============================================================*/
+
+
+
+/*===============================================================*/
+@media (min-width: 500px) {
+    .scroll-item {
+        flex-basis: calc(50% - 10px);
+    }
+
+    .scroll-item:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+@media (min-width: 700px) {
+    .scroll-item {
+        flex-basis: calc(calc(100% / 3) - 20px);
+    }
+
+    .scroll-item:not(:last-child) {
+        margin-right: 30px;
+    }
+}
+@media (min-width: 1100px) {
+    .scroll-item {
+        flex-basis: calc(25% - 30px);
+    }
+
+    .scroll-item:not(:last-child) {
+        margin-right: 1px;
+    }
+}
+.selected-date {
+    background-color: #ffc73d; /* Change this color to the desired highlight color */
+    /*color: #0000CC; !* Adjust text color if necessary *!*/
+}
+
+/* Define borders for FullCalendar cells */
+.fc-day .fc-day-top {
+    border: 1px solid #ddd !important;/* Add borders around each day */
+}
+
+.highlighted {
+    border: 2px solid green; 
+}
+
+.add-cursor-pointer {
+    cursor: pointer;
+}

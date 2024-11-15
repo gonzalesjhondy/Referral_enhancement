@@ -1,0 +1,42 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `incomingMonitorPatient`()
+BEGIN
+
+	SELECT
+		t.id as tracking_id,
+        pf.id as pf_id,
+        t.code,
+		CONCAT(p.lname,", ",p.fname," ",p.mname) as patient_name,
+        DATEDIFF(CURRENT_DATE, STR_TO_DATE(p.dob, '%Y-%m-%d'))/365 AS ageInYears,
+        p.sex,
+        CONCAT(bar.description,"\n", mun.description,"\n", pro.description) as address,
+        pf.diagnosis,
+        pf.reason,
+        pf.referred_md,
+        CONCAT(referring_md.lname,",", referring_md.fname,",", referring_md.mname) as referring_md,
+        CONCAT(reffer_md.lname,", ",reffer_md.fname," ",reffer_md.mname) as referred_md,
+        mt.transportation,
+        f.name,
+        t.date_transferred,
+        t.date_referred,
+        t.id as tracking_id,
+        pf.referring_md as referring_md1,
+        t.status
+
+
+	FROM doh_referral.tracking t
+		left join doh_referral.patients p on p.id = t.patient_id
+        left join doh_referral.patient_form pf on pf.patient_id = t.patient_id
+        left join doh_referral.barangay bar on bar.id = p.brgy
+        left join doh_referral.muncity mun on mun.id = p.muncity
+        left join doh_referral.province pro on pro.id = p.province
+        left join doh_referral.users referring_md on referring_md.id = pf.referring_md
+        left join doh_referral.facility f on f.id = t.referred_to
+        left join doh_referral.mode_transportation mt on mt.id = t.mode_transportation
+
+		left join doh_referral.users reffer_md on reffer_md.id = pf.referred_md
+
+		where t.status = "accepted" order by t.id desc limit 10;
+
+
+
+END

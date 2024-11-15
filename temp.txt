@@ -1,0 +1,65 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AcceptedFunc`(IN facility_id VARCHAR(10),IN date_start VARCHAR(50),IN date_end VARCHAR(50),IN keyword_search VARCHAR(255))
+BEGIN
+	IF keyword_search = " " THEN
+	   
+		SELECT 
+		tra.id,
+		tra.type,
+		tra.code,
+		tra.department_id,
+        tra.action_md,
+        tra.referring_md,
+		fac.name,
+        tra.type,
+        if(tra.type = 'normal', pf.prescription, prf.prescription) as prescription,
+		concat(pat.fname," ",pat.mname," ",pat.lname) as patient_name,
+		DATE_FORMAT(tra.date_accepted,'%M %d, %Y %h:%i %p') as date_accepted,
+        (SELECT act.status from doh_referral.activity act where act.code = tra.code and act.status = tra.status order by id desc limit 1) as status
+		from doh_referral.tracking tra
+		join doh_referral.facility fac on fac.id = tra.referred_from
+		join doh_referral.patients pat on pat.id = tra.patient_id
+        left join doh_referral.patient_form pf on pf.code = tra.code
+        left join doh_referral.pregnant_form prf on prf.code = tra.code
+		where 
+		tra.referred_to = facility_id and
+		(tra.status = 'accepted' or tra.status = 'admitted' or tra.status = 'arrived') and
+        tra.date_accepted between date_start and date_end
+		order by tra.date_accepted desc;
+    
+    ELSE
+
+        SELECT 
+		tra.id,
+		tra.type,
+		tra.code,
+        tra.department_id,
+        tra.action_md,
+        tra.referring_md,
+		fac.name,
+		concat(pat.fname," ",pat.mname," ",pat.lname) as patient_name,
+		DATE_FORMAT(tra.date_accepted,'%M %d, %Y %h:%i %p') as date_accepted,
+        (SELECT act.status from doh_referral.activity act where act.code = tra.code and act.status = tra.status order by id desc limit 1) as status
+		from doh_referral.tracking tra
+		join doh_referral.facility fac on fac.id = tra.referred_from
+		join doh_referral.patients pat on pat.id = tra.patient_id
+		where 
+		(
+			tra.referred_to = facility_id and
+			(tra.status = 'accepted' or tra.status = 'admitted' or tra.status = 'arrived') and
+			tra.date_accepted between date_start and date_end
+        )
+        and
+		(
+		   pat.fname like concat("%",keyword_search,"%") or
+           pat.mname like concat("%",keyword_search,"%") or
+		   pat.lname like concat("%",keyword_search,"%") or
+           concat(pat.fname," ",pat.mname) like concat("%",keyword_search,"%") or
+           concat(pat.lname," ",pat.fname) like concat("%",keyword_search,"%") or
+           concat(pat.fname," ",pat.lname) like concat("%",keyword_search,"%") or
+           concat(pat.fname," ",pat.mname," ",pat.lname) like concat("%",keyword_search,"%") or
+		   tra.code like concat("%",keyword_search,"%")
+		)
+		order by tra.date_accepted desc;
+    
+	END IF;
+END

@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class TableActivity extends Migration
+{
+    public function up()
+    {
+        if(Schema::hasTable('activity')){
+            return true;
+        }
+        Schema::create('activity', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('code');
+            $table->integer('patient_id');
+            $table->dateTime('date_referred');
+            $table->dateTime('date_arrived');
+            $table->dateTime('date_seen');
+            $table->integer('referred_from');
+            $table->integer('referred_to');
+            $table->text('remarks');
+            $table->string('status');
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('activity');
+    }
+}

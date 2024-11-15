@@ -1,0 +1,371 @@
+.panel-scoped-telemedicine {
+  /*.stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+  }*/
+}
+.panel-scoped-telemedicine .stepper-wrapper {
+  font-family: Arial;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.panel-scoped-telemedicine .stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.panel-scoped-telemedicine .stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+}
+.panel-scoped-telemedicine .stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+}
+.panel-scoped-telemedicine .stepper-item.active {
+  font-weight: bold;
+}
+.panel-scoped-telemedicine .stepper-item.completed .step-counter {
+  background-color: #4F9B83;
+  color: white;
+}
+.panel-scoped-telemedicine .stepper-item.completed::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #4bb543;
+  width: 120px;
+  top: 20px;
+  left: 50%;
+  z-index: 3;
+  color: white;
+}
+.panel-scoped-telemedicine .step-counter-examined:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.panel-scoped-telemedicine .stepper-item-prescription.completed::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #4bb543;
+  width: 125px;
+  top: 44px;
+  left: 50px;
+  z-index: 3;
+  transform: rotate(26deg);
+}
+.panel-scoped-telemedicine .stepper-item-prescription::after {
+  transform: rotate(160deg);
+  margin-top: -28px;
+}
+.panel-scoped-telemedicine .step-counter-prescription:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.panel-scoped-telemedicine .stepper-item-upward {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.panel-scoped-telemedicine .stepper-item-upward .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+  margin-top: -50px;
+}
+.panel-scoped-telemedicine .stepper-item-upward.completed .step-counter {
+  background-color: #4F9B83;
+  color: white;
+}
+.panel-scoped-telemedicine .stepper-item-upward.completed::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #4bb543;
+  width: 100%;
+  left: 40%;
+  z-index: 3;
+  margin-top: -30px;
+}
+.panel-scoped-telemedicine .stepper-item-upward::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  left: -45%;
+  z-index: 2;
+  transform: rotate(160deg);
+  margin-top: -8px;
+}
+.panel-scoped-telemedicine .stepper-item-follow_new .step-counter-follow_new {
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-top: -44px;
+}
+.panel-scoped-telemedicine .stepper-item-follow_new.completed .step-counter-follow_new {
+  background-color: #4F9B83;
+  color: white;
+}
+.panel-scoped-telemedicine .stepper-item-follow_new {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  margin-top: 100px;
+}
+.panel-scoped-telemedicine .stepper-item-follow_new::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 120px;
+  z-index: 2;
+  left: -100px;
+  transform: rotate(26deg);
+  margin-top: -74px;
+}
+.panel-scoped-telemedicine .step-counter-follow_new:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.panel-scoped-telemedicine .step-counter-referred {
+  cursor: pointer;
+}
+.panel-scoped-telemedicine .step-counter-referred:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.panel-scoped-telemedicine .stepper-item-referred {
+  margin-top: -50px;
+}
+.panel-scoped-telemedicine .stepper-item .step-counter-follow {
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-top: 5px;
+}
+.panel-scoped-telemedicine .stepper-item-follow {
+  margin-top: 35px;
+  width: 150px;
+}
+.panel-scoped-telemedicine .stepper-item-follow.completed .step-counter-follow {
+  background-color: #4F9B83;
+  color: white;
+}
+.panel-scoped-telemedicine .stepper-item-follow.completed::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #4bb543;
+  width: 135px;
+  z-index: 3;
+  margin-top: -1px;
+}
+.panel-scoped-telemedicine .step-counter-follow:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.panel-scoped-telemedicine .stepper-item-treated_new {
+  width: 150px;
+  top: 120px;
+  margin-bottom: 150px;
+}
+.panel-scoped-telemedicine .stepper-item .step-counter-treated_new {
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-top: 5px;
+}
+.panel-scoped-telemedicine .step-name-treated_new {
+  margin-top: 1px;
+}
+.panel-scoped-telemedicine .stepper-item-treated_new.completed .step-counter-treated_new {
+  background-color: #4F9B83;
+  color: white;
+}
+.panel-scoped-telemedicine .stepper-item-treated_new::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 180px;
+  transform: rotate(45deg);
+  top: -42px;
+  left: -80px;
+}
+.panel-scoped-telemedicine .stepper-item-treated_new.completed::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #4bb543;
+  width: 175px;
+  z-index: 3;
+  transform: rotate(44deg);
+  margin-top: -10px;
+  color: white;
+}
+.panel-scoped-telemedicine .step-name-treated_new::after {
+  content: none !important;
+}
+.panel-scoped-telemedicine .step-counter-treated_new:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.panel-scoped-telemedicine .stepper-item-follow_new::after {
+  content: none !important;
+}
+.panel-scoped-telemedicine .stepper-item:first-child::before {
+  content: none;
+}
+.panel-scoped-telemedicine .stepper-item:last-child::after {
+  content: none;
+}
+.panel-scoped-telemedicine .stepper-item:nth-child(6)::after {
+  content: none;
+}
+.panel-scoped-telemedicine .stepper-item:nth-child(7)::after {
+  content: none;
+}
+
+/* start my file upload style changes */
+.carousel img {
+  margin: 0 auto;
+}
+
+.left-control .glyphicon-chevron-left {
+  left: 50%;
+  margin-left: -50px;
+}
+
+.right-control .glyphicon-chevron-right {
+  right: 50%;
+  margin-right: -50px;
+}
+
+.d-file {
+  font-size: 14px;
+  color: #FFF;
+  background-color: #4CAF50;
+  padding: 8px 12px;
+  margin: 4px;
+  border-radius: 5px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  transition: background-color 0.3s, transform 0.3s;
+  text-decoration: none;
+}
+
+.d-file:hover {
+  color: #7AE205;
+  transform: translateY(-2px);
+}
+
+.file-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.filecolor {
+  color: white !important;
+  background: linear-gradient(180deg, #52C755, #056608) !important;
+  border: 1px solid #056608 !important;
+}
+
+a.btn.filecolor:hover {
+  transform: translateY(-10px);
+  color: white;
+  background: linear-gradient(180deg, #056608, #8BD98D);
+}
+
+a.btn.filecolorDelete {
+  color: white;
+  background: linear-gradient(180deg, #EE3533, #ED1E24);
+}
+
+a.btn.filecolorDelete:hover {
+  transform: translateY(-10px);
+  color: white;
+  background: linear-gradient(180deg, #ED1E24, #F3787A);
+}
+
+a.btn.filecolorclose {
+  color: dark;
+  /* Darker text for better readability */
+  background: linear-gradient(180deg, #EDEDED, #CCCCCC);
+  border: 1px solid #BBB;
+  /* Subtle border for definition */
+  transition: background-color 0.3s, transform 0.2s;
+  /* Smooth transition for hover effect */
+}
+
+.filecolorclose:hover {
+  transform: translateY(-10px);
+  /* Move the button up and to the right */
+  background: linear-gradient(180deg, #ED1E24, #F3787A);
+  /* Optional: Add a box-shadow for better visual effect on hover */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#closeModalId {
+  display: inline-block;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  #closeModalId {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+.popover {
+  width: 230px;
+}
+
+/*-----------------css from File Folder List Modal------------*/
+/*-----------------css from File Folder List Modal------------*/

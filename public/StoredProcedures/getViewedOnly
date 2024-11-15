@@ -1,0 +1,4 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getViewedOnly`(IN facility_id VARCHAR(10))
+BEGIN
+	select count(*) as viewed_only from ( SELECT count(facility_id) FROM doh_referral.seen where seen.facility_id = facility_id group by seen.tracking_id ) as count;
+END

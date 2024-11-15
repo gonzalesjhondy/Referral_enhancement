@@ -1,0 +1,1 @@
+<script src="{{ url('resources/plugin/Chart.js/Chart.js') }}"></script>

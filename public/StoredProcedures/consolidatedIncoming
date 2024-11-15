@@ -1,0 +1,9 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `consolidatedIncoming`()
+BEGIN
+
+	SELECT fac.*,count(fac.id) as count FROM doh_referral.facility fac
+    join doh_referral.tracking tra on tra.referred_to = fac.id
+    group by fac.id
+    order by count desc;
+
+END

@@ -1,0 +1,14 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/app_layout.js": "/js/app_layout.js",
+    "/js/app_reco.js": "/js/app_reco.js",
+    "/js/app_doctor.js": "/js/app_doctor.js",
+    "/js/app_login.js": "/js/app_login.js",
+    "/js/app_video.js": "/js/app_video.js",
+    "/js/app_video_pregnant.js": "/js/app_video_pregnant.js",
+    "/js/app_qr_referred.js": "/js/app_qr_referred.js",
+    "/js/app_qr_edit.js": "/js/app_qr_edit.js",
+    "/js/app_appointment.js": "/js/app_appointment.js",
+    "/css/telemedicine_panel.css": "/css/telemedicine_panel.css",
+    "/css/refer_panel.css": "/css/refer_panel.css"
+}
